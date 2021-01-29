@@ -1,4 +1,7 @@
-public void setup()
+import processing.core.PApplet;
+
+public class Sketch extends PApplet{
+    public void setup()
 {
   String lines[] = loadStrings("palindromes.txt");
   System.out.println("there are " + lines.length + " lines");
@@ -16,14 +19,27 @@ public void setup()
 }
 public boolean palindrome(String word)
 {
-  //your code here
+  String backwards = 
+  reverse(justChar(word)).toLowerCase();
+  if(backwards.equals(justChar(word).toLowerCase()))
+    return true;
+    else
   return false;
 }
-public String reverse(String str)
-{
-    String sNew = new String();
-    //your code here
-    return sNew;
+public String reverse(String sWord){
+  String s2Word = new String();
+  for(int i = sWord.length(); i > 0; i--){
+  s2Word = s2Word + sWord.substring(i-1, i);
+  }
+  return s2Word;
 }
-
-
+public String justChar(String noSymbol){
+  String lettersOnly = new String();
+  for(int i = 0; i < noSymbol.length(); i++){
+  if(Character.isLetter(noSymbol.charAt(i)) == true){
+    lettersOnly = lettersOnly + noSymbol.charAt(i);
+  }
+  }
+  return lettersOnly;
+}
+}
